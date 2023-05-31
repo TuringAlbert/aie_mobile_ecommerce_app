@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
+options: "9503484475cd5fc929609b2a559132311f49aa07d37535e29ec7bc7498a6da7a"
+build_start_time: [1681270411, 784973144]
+build_end_time: [1681270411, 813745975]
+inputs:
+  "/Users/juyoungkim/Development/aie/aie_mobile/my_flutter1/macos/Flutter/GeneratedPluginRegistrant.swift": !private [1681270395, 906410694]
+  "/Users/juyoungkim/Development/aie/aie_mobile/my_flutter1/macos/Runner/AppDelegate.swift": !private [1681269802, 925067424]
+  "/Users/juyoungkim/Development/aie/aie_mobile/my_flutter1/macos/Runner/MainFlutterWindow.swift": !private [1681269802, 928113937]
