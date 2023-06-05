@@ -3,8 +3,84 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 // Router
 void main() async {
-  runApp(MainPage());
+  // runApp(MainPage());
+  runApp(const BottomNavigationBarExampleApp());
 }
+
+class BottomNavigationBarExampleApp extends StatelessWidget {
+  const BottomNavigationBarExampleApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: BottomNavigationBarExample(),
+    );
+  }
+}
+
+class BottomNavigationBarExample extends StatefulWidget {
+  const BottomNavigationBarExample({super.key});
+
+  @override
+  State<BottomNavigationBarExample> createState() =>
+      _BottomNavigationBarExampleState();
+}
+
+class _BottomNavigationBarExampleState
+    extends State<BottomNavigationBarExample> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static List<Widget> _widgetOptions = <Widget>[
+    MainPage(),
+    Text(
+      'Index 1 : Cart Page',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: Profile Page',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('BottomNavigationBar Sample'),
+      ),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "home"
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_shopping_cart),
+            label: "cart"
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "my profile"
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.blueAccent[800],
+        onTap: _onItemTapped,
+      ),
+    );
+  }
+}
+
 class MainPage extends StatefulWidget{
   @override
   State<MainPage> createState() => _MainPageState();
@@ -13,7 +89,6 @@ class _MainPageState extends State <MainPage> {
   LoggedInData? _loggedData; //사용자 로그인 데이터 저장을 위한 변수
   final userProfile = UserProfile(name: '', address: '', email: '');
   final consumerProfile = ConsumerProfile(name: '', email: '', address: '');
-
 
   void updateConsumerProfile(ConsumerProfile profile) {
     setState(() {
@@ -60,7 +135,6 @@ class _MainPageState extends State <MainPage> {
     );
   }
 }
-
 class LoggedInData {
   String? id;
   String? pw;
@@ -99,8 +173,6 @@ class LoggedInData {
         'myData', toJson()); // key가 'myData'인 값에 MyData 인스턴스를 JSON으로 인코딩하여 저장
   }
 }
-
-
 class HomePage extends StatefulWidget {
   final ConsumerProfile consumerProfile;
   HomePage({
@@ -458,8 +530,6 @@ class _HomePageState extends State<HomePage>{
     );
   }
 }
-
-
 class CardPage extends StatelessWidget {
   const CardPage({super.key});
 
@@ -659,7 +729,6 @@ class PaymentPage extends StatelessWidget {
     );
   }
 }
-
 class UserProfile {
   String name;
   String address;
@@ -786,8 +855,6 @@ class _ConsumerProfileFormState extends State<ConsumerProfileForm> {
     );
   }
 }
-
-
 class MyDataWidget extends StatefulWidget {
   @override
   _MyDataWidgetState createState() =>
