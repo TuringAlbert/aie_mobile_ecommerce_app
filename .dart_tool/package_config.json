@@ -80,6 +80,18 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "http",
+      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/http-0.13.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "http_parser",
+      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/http_parser-4.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "js",
       "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/js-0.6.7",
       "packageUri": "lib/",
@@ -236,6 +248,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "typed_data",
+      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/typed_data-1.3.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/vector_math-2.1.4",
       "packageUri": "lib/",
@@ -260,7 +278,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-05-31T03:14:37.689054Z",
+  "generated": "2023-06-07T03:15:38.529267Z",
   "generator": "pub",
   "generatorVersion": "3.1.0-155.0.dev"
 }

@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'home_page/homepage.dart';
+import 'TodoScreen.dart';
+import 'TodoAddScreen.dart';
 
 // Router
 void main() async {
@@ -35,10 +37,7 @@ class _BottomNavigationBarMainState
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     MainPage(),
-    Text(
-      'Index 1 : Cart Page',
-      style: optionStyle,
-    ),
+    TodoListScreen(),
     Text(
       'Index 2: Profile Page',
       style: optionStyle,
@@ -82,4 +81,5 @@ class _BottomNavigationBarMainState
     );
   }
 }
+
 
