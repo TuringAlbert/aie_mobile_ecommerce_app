@@ -5,6 +5,7 @@ import 'package:my_flutter1/models/Cart.dart';
 import 'components/body.dart';
 import 'components/check_out_card.dart';
 import 'package:my_flutter1/size_config.dart';
+import 'package:my_flutter1/navigation_bar.dart';
 
 
 class CartScreen extends StatelessWidget {

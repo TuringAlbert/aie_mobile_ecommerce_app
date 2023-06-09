@@ -21,7 +21,7 @@ class BottomNavigationBarApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color inActiveIconColor = Color(0xFFB6B6B6);
+    final Color inActiveIconColor = Colors.grey;
     return Container(
       padding: EdgeInsets.symmetric(vertical: 14),
       decoration: BoxDecoration(
@@ -47,7 +47,7 @@ class BottomNavigationBarApp extends StatelessWidget {
                 icon: SvgPicture.asset(
                   "assets/icons/Shop Icon.svg",
                   color: MenuState.home == selectedMenu
-                      ? kPrimaryColor
+                      ? Colors.blue
                       : inActiveIconColor,
                 ),
                 onPressed: () =>
@@ -57,7 +57,7 @@ class BottomNavigationBarApp extends StatelessWidget {
               icon: SvgPicture.asset(
                 "assets/icons/Heart Icon.svg",
                 color: MenuState.cart == selectedMenu
-                    ? kPrimaryColor
+                    ? Colors.blue
                     : inActiveIconColor,
               ),
               onPressed: ()  =>
@@ -67,7 +67,7 @@ class BottomNavigationBarApp extends StatelessWidget {
                 icon: SvgPicture.asset(
                   "assets/icons/User Icon.svg",
                   color: MenuState.profile == selectedMenu
-                      ? kPrimaryColor
+                      ? Colors.blue
                       : inActiveIconColor,
                 ),
                 onPressed: () =>
