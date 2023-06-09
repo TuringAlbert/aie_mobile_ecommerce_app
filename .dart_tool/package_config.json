@@ -68,6 +68,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_svg",
+      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/flutter_svg-0.22.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///Users/juyoungkim/Development/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -99,9 +105,9 @@
     },
     {
       "name": "lints",
-      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/lints-2.0.1",
+      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/lints-2.1.1",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.0"
     },
     {
       "name": "matcher",
@@ -128,10 +134,22 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "path_provider_linux",
-      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/path_provider_linux-2.1.10",
+      "name": "path_drawing",
+      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/path_drawing-0.5.1+1",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "path_parsing",
+      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/path_parsing-0.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "path_provider_linux",
+      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/path_provider_linux-2.1.11",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
     },
     {
       "name": "path_provider_platform_interface",
@@ -141,9 +159,15 @@
     },
     {
       "name": "path_provider_windows",
-      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/path_provider_windows-2.1.6",
+      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/path_provider_windows-2.1.7",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "petitparser",
+      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/petitparser-5.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "platform",
@@ -165,9 +189,9 @@
     },
     {
       "name": "shared_preferences",
-      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/shared_preferences-2.1.1",
+      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/shared_preferences-2.1.2",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.18"
     },
     {
       "name": "shared_preferences_android",
@@ -261,9 +285,9 @@
     },
     {
       "name": "win32",
-      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/win32-4.1.4",
+      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/win32-5.0.3",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.0"
     },
     {
       "name": "xdg_directories",
@@ -272,13 +296,19 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "xml",
+      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/xml-5.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
       "name": "my_flutter1",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "2.17"
     }
   ],
-  "generated": "2023-06-07T03:15:38.529267Z",
+  "generated": "2023-06-09T09:46:49.607907Z",
   "generator": "pub",
   "generatorVersion": "3.1.0-155.0.dev"
 }
