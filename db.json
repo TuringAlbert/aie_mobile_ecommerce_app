@@ -21,6 +21,11 @@
       "cost": 6969
     },
     {
+      "image": "assets/images/poster.jpeg",
+      "name": "yonsei poster",
+      "cost": 69420
+    },
+    {
       "image": "assets/images/tshirt.png",
       "name": "random tshirt",
       "cost": 420
