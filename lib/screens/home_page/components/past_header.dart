@@ -1,13 +1,39 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:my_flutter1/screens/home_page/product_details_page/product_details_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 import '../../../size_config.dart';
 
-class PastHeader extends StatelessWidget{
-  const PastHeader({
-    Key? key,
-}) : super(key: key);
+class PastHeader extends StatefulWidget {
+  @override
+  _PastHeaderState createState() => _PastHeaderState();
+}
+
+class _PastHeaderState extends State<PastHeader> {
+  List<dynamic> data = [];
+  static const baseUrl = 'http://localhost:3000'; // Change this to your server's address
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData().then((jsonData) {
+      setState(() {
+        data = jsonData;
+      });
+    });
+  }
+
+  static Future<List<dynamic>> fetchData() async {
+    final response = await http.get(Uri.parse('$baseUrl/products'));
+
+    if (response.statusCode == 200) {
+      List<dynamic> jsonData = json.decode(response.body);
+      return jsonData;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -81,81 +107,36 @@ class PastHeader extends StatelessWidget{
               textAlign: TextAlign.left),
           SizedBox(height: 10,),
           SizedBox(height: 10,),
-          Container(
-              decoration : BoxDecoration(
-                  borderRadius:  BorderRadius.circular(2),
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 2,)
-              ),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
+      Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(2),
+          border: Border.all(
+            color: Colors.black,
+            width: 2,
+          )),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: data.map((item) {
+              return Container(
+                child: Column(
                   children: [
-                    Container(
-                        child: Column(
-                          children: [
-                            Image.asset("assets/images/pen.jpeg", width: 200, height: 200,),
-                            Text("연세대학교 펜777"),
-                            Text("5,000원"),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, ProductDetailsScreen.routeName);
-                              },
-                              child: const Text('구매하기!'),
-                            ),
-                          ],
-                        )
-                    ),
-                    Container(
-                        child: Column(
-                          children: [
-                            Image.asset("assets/images/pencilc_ase.png", width: 200, height: 200,),
-                            Text("연세대학교 필통888"),
-                            Text("10,000원"),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/pay');
-                              },
-                              child: const Text('구매하기!'),
-                            ),
-                          ],
-                        )
-                    ),
-                    Container(
-                        child: Column(
-                          children: [
-                            Image.asset("assets/images/bear.jpeg", width: 200, height: 200,),
-                            Text("연세대학교 곰인형"),
-                            Text("35,000원"),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/pay');
-                              },
-                              child: const Text('구매하기!'),
-                            ),
-                          ],
-                        )
-                    ),
-                    Container(
-                        child: Column(
-                          children: [
-                            Image.asset("assets/images/badge.jpeg", width: 200, height: 200,),
-                            Text("연세대학교 뱃지"),
-                            Text("20,000원"),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/pay');
-                              },
-                              child: const Text('구매하기!'),
-                            ),
-                          ],
-                        )
+                    Image.asset(item['image'], width: 200, height: 200),
+                    Text(item['name']),
+                    Text(item['cost'].toString()),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/pay');
+                      },
+                      child: const Text('구매하기!'),
                     ),
                   ],
                 ),
-              )
+              );
+            }).toList(),
           ),
+        ),
+      ),
           SizedBox(height: 10,),
           Text("가장 유명한 제품!",
               style: TextStyle(fontSize: 22),
