@@ -11,6 +11,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 class ProductDetailsScreen extends StatelessWidget {
   static String routeName = "/details";
 
+
+
   @override
   Widget build(BuildContext context) {
     final ProductDetailsArguments agrs =

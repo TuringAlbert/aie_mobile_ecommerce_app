@@ -15,7 +15,6 @@ class Body extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-
               SizedBox(height: getProportionateScreenHeight(20)),
               HomeHeader(),
               PastHeader(),
@@ -33,7 +32,6 @@ class Body extends StatelessWidget {
                       },
                     ),
                     SizedBox(width: getProportionateScreenWidth(20)),
-                    CartAdded()
                   ],
                 ),
               ),
