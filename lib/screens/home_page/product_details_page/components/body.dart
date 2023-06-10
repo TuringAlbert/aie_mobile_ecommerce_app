@@ -27,6 +27,7 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body>{
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   late Future<int> _counter;
+  late Future<int> _counter_yonsei;
 
   Future<void> _incrementCounter() async {
     final SharedPreferences prefs = await _prefs;

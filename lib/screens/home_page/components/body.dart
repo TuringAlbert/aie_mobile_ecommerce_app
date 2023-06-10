@@ -17,7 +17,7 @@ class Body extends StatelessWidget {
             children: [
               SizedBox(height: getProportionateScreenHeight(20)),
               HomeHeader(),
-              PastHeader(),
+              SizedBox(height: getProportionateScreenHeight(20)),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -35,7 +35,7 @@ class Body extends StatelessWidget {
                   ],
                 ),
               ),
-
+              PastHeader(),
             ],
           ),
         ),
