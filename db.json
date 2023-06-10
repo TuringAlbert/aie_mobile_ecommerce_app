@@ -1,74 +1,29 @@
 {
-  "todos": [
+  "products": [
     {
-      "id": 1,
-      "title": "할일1",
-      "completed": true
+      "image": "assets/images/badge.jpeg",
+      "name": "yonsei badge",
+      "cost": 5000
     },
     {
-      "id": 2,
-      "title": "할일2",
-      "completed": true
+      "image": "assets/images/bag.jpg",
+      "name": "yonsei bag",
+      "cost": 2000
     },
     {
-      "id": 3,
-      "title": "할일3",
-      "completed": false
+      "image": "assets/images/bear.jpeg",
+      "name": "yonsei bear",
+      "cost": 10000
     },
     {
-      "id": 4,
-      "title": "1111",
-      "completed": true
+      "image": "assets/images/folder.jpeg",
+      "name": "yonsei folder",
+      "cost": 6969
     },
     {
-      "id": 5,
-      "title": "3333",
-      "completed": false
-    },
-    {
-      "id": 6,
-      "title": "123123123",
-      "completed": true
-    },
-    {
-      "id": 7,
-      "title": "9999999",
-      "completed": false
-    },
-    {
-      "id": 8,
-      "title": "hello world",
-      "completed": false
-    },
-    {
-      "id": 9,
-      "title": "test",
-      "completed": false
-    },
-    {
-      "id": 10,
-      "title": "asdfasdfa",
-      "completed": false
-    },
-    {
-      "id": 11,
-      "title": "9393939393",
-      "completed": false
-    },
-    {
-      "id": 12,
-      "title": "111111111",
-      "completed": false
-    },
-    {
-      "id": 13,
-      "title": "22222222222",
-      "completed": false
-    },
-    {
-      "id": 14,
-      "title": "ㅓㅏ",
-      "completed": false
+      "image": "assets/images/tshirt.png",
+      "name": "random tshirt",
+      "cost": 420
     }
   ]
 }
