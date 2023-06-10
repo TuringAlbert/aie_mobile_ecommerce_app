@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:my_flutter1/screens/home_page/product_details_page/product_details_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../../../size_config.dart';
+import 'package:my_flutter1/screens/home_page/product_details_page/product_details_page.dart';
 
 class PastHeader extends StatefulWidget {
   @override
@@ -74,7 +76,7 @@ class _PastHeaderState extends State<PastHeader> {
                   onPressed: () {
                     // Validate will return true if the form is valid, or false if
                     // the form is invalid.
-                    Navigator.pushNamed(context, '/myData');
+                    Navigator.pushNamed(context, ProductDetailsScreen.routeName);
                   },
                   child: const Text('검색하기'),
                 ),
@@ -93,7 +95,7 @@ class _PastHeaderState extends State<PastHeader> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){Navigator.pushNamed(context,'/details');}, child: Text("교재도서", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
+                    TextButton(onPressed: (){Navigator.pushNamed(context, ProductDetailsScreen.routeName);}, child: Text("교재도서", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
                     TextButton(onPressed: (){Navigator.pushNamed(context, '/details');}, child: Text("패션굿즈", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
                     TextButton(onPressed: (){Navigator.pushNamed(context, '/details');}, child: Text("문구굿즈", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
                     TextButton(onPressed: (){Navigator.pushNamed(context, '/details');}, child: Text("생활용품", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),

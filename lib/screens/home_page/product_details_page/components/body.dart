@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_flutter1/components/default_button.dart';
 import 'package:my_flutter1/models/Product.dart';
 import 'package:my_flutter1/size_config.dart';
+import 'package:my_flutter1/screens/home_page/components/cart_added.dart';
 
 import 'color_dots.dart';
 import 'product_description.dart';
@@ -22,6 +23,7 @@ class Body extends StatelessWidget {
           color: Colors.white,
           child: Column(
             children: [
+              CartAdded(),
               ProductDescription(
                 product: product,
                 pressOnSeeMore: () {},

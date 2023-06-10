@@ -3,8 +3,14 @@ import 'package:my_flutter1/models/Product.dart';
 import 'package:my_flutter1/screens/home_page/product_details_page/components/body.dart';
 import 'package:my_flutter1/screens/home_page/product_details_page/components/custom_app_bar.dart';
 
+import 'package:my_flutter1/size_config.dart';
+import 'package:my_flutter1/constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+
 class ProductDetailsScreen extends StatelessWidget {
   static String routeName = "/details";
+
   @override
   Widget build(BuildContext context) {
     final ProductDetailsArguments agrs =

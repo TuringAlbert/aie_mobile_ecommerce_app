@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
-class SharedPreferencesDemo extends StatefulWidget {
-  const SharedPreferencesDemo({super.key});
+class CartAdded extends StatefulWidget {
+  const CartAdded({super.key});
 
   @override
-  SharedPreferencesDemoState createState() => SharedPreferencesDemoState();
+  CartAddedState createState() => CartAddedState();
 }
 
-class SharedPreferencesDemoState extends State<SharedPreferencesDemo> {
+class CartAddedState extends State<CartAdded> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   late Future<int> _counter;
 
