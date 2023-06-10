@@ -55,7 +55,7 @@ class BottomNavigationBarApp extends StatelessWidget {
             ),
             IconButton(
               icon: SvgPicture.asset(
-                "assets/icons/Heart Icon.svg",
+                "assets/icons/Cart Icon.svg",
                 color: MenuState.cart == selectedMenu
                     ? Colors.blue
                     : inActiveIconColor,
