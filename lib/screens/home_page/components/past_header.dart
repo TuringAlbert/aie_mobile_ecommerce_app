@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:my_flutter1/screens/home_page/product_details_page/product_details_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../size_config.dart';
 
@@ -66,10 +67,10 @@ class PastHeader extends StatelessWidget{
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){Navigator.pushNamed(context, '/pay');}, child: Text("교재도서", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
-                    TextButton(onPressed: (){Navigator.pushNamed(context, '/pay');}, child: Text("패션굿즈", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
-                    TextButton(onPressed: (){Navigator.pushNamed(context, '/pay');}, child: Text("문구굿즈", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
-                    TextButton(onPressed: (){Navigator.pushNamed(context, '/pay');}, child: Text("생활용품", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
+                    TextButton(onPressed: (){Navigator.pushNamed(context,'/details');}, child: Text("교재도서", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
+                    TextButton(onPressed: (){Navigator.pushNamed(context, '/details');}, child: Text("패션굿즈", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
+                    TextButton(onPressed: (){Navigator.pushNamed(context, '/details');}, child: Text("문구굿즈", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
+                    TextButton(onPressed: (){Navigator.pushNamed(context, '/details');}, child: Text("생활용품", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
                   ],
                 ),
               )
@@ -95,11 +96,11 @@ class PastHeader extends StatelessWidget{
                         child: Column(
                           children: [
                             Image.asset("assets/images/pen.jpeg", width: 200, height: 200,),
-                            Text("연세대학교 펜"),
+                            Text("연세대학교 펜777"),
                             Text("5,000원"),
                             ElevatedButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, '/pay');
+                                Navigator.pushNamed(context, ProductDetailsScreen.routeName);
                               },
                               child: const Text('구매하기!'),
                             ),
@@ -110,7 +111,7 @@ class PastHeader extends StatelessWidget{
                         child: Column(
                           children: [
                             Image.asset("assets/images/pencilc_ase.png", width: 200, height: 200,),
-                            Text("연세대학교 필통"),
+                            Text("연세대학교 필통888"),
                             Text("10,000원"),
                             ElevatedButton(
                               onPressed: () {
