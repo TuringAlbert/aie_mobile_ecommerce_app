@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
+import 'package:my_flutter1/models/Product.dart';
 
 
 class SearchBarApp extends StatefulWidget {
-  const SearchBarApp({super.key});
+  List<Product> product;
+
+
+  SearchBarApp({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
+
   @override
   State<SearchBarApp> createState() => _SearchBarAppState();
+
 }
 
 class _SearchBarAppState extends State<SearchBarApp> {
@@ -17,7 +26,13 @@ class _SearchBarAppState extends State<SearchBarApp> {
     final ThemeData themeData = ThemeData(useMaterial3: true);
     return Column(
           children: <Widget>[
-            SearchAnchor(
+            Container(
+              width: SizeConfig.screenWidth * 0.7,
+              decoration: BoxDecoration(
+              color: kSecondaryColor.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(15),
+              ),
+              child: SearchAnchor(
                 searchController: controller,
                 builder: (BuildContext context, SearchController controller) {
                   return IconButton(
@@ -29,8 +44,8 @@ class _SearchBarAppState extends State<SearchBarApp> {
                 },
                 suggestionsBuilder:
                     (BuildContext context, SearchController controller) {
-                  return List<ListTile>.generate(5, (int index) {
-                    final String item = 'item $index';
+                  return List<ListTile>.generate(3, (int index) {
+                    final String item = widget.product[index].title;
                     return ListTile(
                       title: Text(item),
                       onTap: () {
@@ -40,7 +55,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
                       },
                     );
                   });
-                }),
+                }),),
             Center(
               child: controller.text.isEmpty
                   ? const Text('No item selected')

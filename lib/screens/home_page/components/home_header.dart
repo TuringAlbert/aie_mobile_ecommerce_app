@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:my_flutter1/screens/cart_page/cart_page.dart';
 import 'dart:math' as math;
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../size_config.dart';
 import 'icon_btn_with_counter.dart';
 import 'search_field.dart';
+import 'package:my_flutter1/models/Product.dart';
 
 
 class HomeHeader extends StatefulWidget {
@@ -73,7 +73,7 @@ void initState() {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SearchBarApp(),
+          SearchBarApp(product: demoProducts),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Bell.svg",
             numOfitem: 3,
