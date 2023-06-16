@@ -69,18 +69,21 @@
       "cost": 1000
     }
   ],
-    "cartItems": [
+  "cartItems": [
     {
+      "id": 1,
       "product": 1,
-      "count": 2
+      "count": 37
     },
     {
+      "id": 3,
       "product": 3,
-      "count": 2
+      "count": 16
     },
     {
+      "id": 2,
       "product": 5,
-      "count": 10
+      "count": 30
     }
   ]
 }

@@ -4,24 +4,50 @@ import 'package:my_flutter1/models/cart_items.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-import 'package:flutter/material.dart';
-import 'package:my_flutter1/models/Cart.dart';
-import 'package:my_flutter1/models/cart_items.dart';
-import '../../../constants.dart';
-import '../../../size_config.dart';
-
-class CartCard extends StatelessWidget {
-  const CartCard({
-    Key? key,
-    required this.cartItem,
-  }) : super(key: key);
-
+class CartCard extends StatefulWidget {
   final CartItem cartItem;
+
+  const CartCard({Key? key, required this.cartItem}) : super(key: key);
+
+  @override
+  _CartCardState createState() => _CartCardState();
+}
+
+class _CartCardState extends State<CartCard> {
+  late int count;
+
+  @override
+  void initState() {
+    super.initState();
+    count = widget.cartItem.count;
+  }
+
+  Future<void> updateCount(int increment) async {
+    int newCount = count + increment;
+    if (newCount < 0) {
+      newCount = 0;
+    }
+
+    try {
+      await CartService.updateCartItem(
+        CartItem(
+          id: widget.cartItem.id,
+          product: widget.cartItem.product,
+          count: newCount,
+        ),
+      );
+      setState(() {
+        count = newCount;
+      });
+    } catch (e) {
+      print('Failed to update count: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Map<String, dynamic>>(
-      future: CartService.getProduct(cartItem.product),
+      future: CartService.getProduct(widget.cartItem.product),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return Row(
@@ -41,29 +67,51 @@ class CartCard extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    snapshot.data!['name'],
-                    style: TextStyle(color: Colors.black, fontSize: 16),
-                    maxLines: 2,
-                  ),
-                  SizedBox(height: 10),
-                  Text.rich(
-                    TextSpan(
-                      text: "\￦${snapshot.data!['cost']}",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600, color: kPrimaryColor),
-                      children: [
-                        TextSpan(
-                            text: " x${cartItem.count}",
-                            style: Theme.of(context).textTheme.bodyText1),
-                      ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      snapshot.data!['name'],
+                      style: TextStyle(color: Colors.black, fontSize: 16),
+                      maxLines: 2,
                     ),
-                  )
-                ],
-              )
+                    SizedBox(height: 10),
+                    Text.rich(
+                      TextSpan(
+                        text: "\￦${snapshot.data!['cost']}",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, color: kPrimaryColor),
+                        children: [
+                          TextSpan(
+                              text: " x$count",
+                              style: Theme.of(context).textTheme.bodyText1),
+                        ],
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.remove),
+                            onPressed: () {
+                              updateCount(-1); // Decrease the count
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.add),
+                            onPressed: () {
+                              updateCount(1); // Increase the count
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           );
         } else if (snapshot.hasError) {
