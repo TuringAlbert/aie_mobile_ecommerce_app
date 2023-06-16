@@ -7,19 +7,19 @@ class CartService {
   static const headers = {'Content-Type': 'application/json'};
 
   // GET /cartItems
-  static Future<List<cartItem>> getcartItems() async {
+  static Future<List<CartItem>> getCartItems() async {
     final response = await http.get(Uri.parse('$baseUrl/cartItems'));
 
     if (response.statusCode == 200) {
       final jsonList = jsonDecode(response.body) as List;
-      return jsonList.map((json) => cartItem.fromJson(json)).toList();
+      return jsonList.map((json) => CartItem.fromJson(json)).toList();
     } else {
       throw Exception('Failed to load cart items');
     }
   }
 
   // POST /cartItems
-  static Future<cartItem> addcartItem(cartItem item) async {
+  static Future<CartItem> addCartItem(CartItem item) async {
     final jsonBody = jsonEncode(item.toJson());
 
     final response = await http.post(
@@ -30,14 +30,14 @@ class CartService {
 
     if (response.statusCode == 201) {
       final json = jsonDecode(response.body);
-      return cartItem.fromJson(json);
+      return CartItem.fromJson(json);
     } else {
       throw Exception('Failed to add cart item');
     }
   }
 
   // PUT /cartItems/:product
-  static Future<cartItem> updatecartItem(cartItem item) async {
+  static Future<CartItem> updateCartItem(CartItem item) async {
     final jsonBody = jsonEncode(item.toJson());
 
     final response = await http.put(
@@ -48,14 +48,14 @@ class CartService {
 
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
-      return cartItem.fromJson(json);
+      return CartItem.fromJson(json);
     } else {
       throw Exception('Failed to update cart item');
     }
   }
 
   // DELETE /cartItems/:product
-  static Future<void> deletecartItem(int productId) async {
+  static Future<void> deleteCartItem(int productId) async {
     final response = await http.delete(Uri.parse('$baseUrl/cartItems/$productId'));
 
     if (response.statusCode != 204) {
