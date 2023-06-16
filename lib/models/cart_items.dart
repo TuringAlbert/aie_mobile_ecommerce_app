@@ -74,4 +74,12 @@ class CartService {
       throw Exception('Failed to load product');
     }
   }
+static Future<double> calculateTotalCost(List<CartItem> cartItems) async {
+    double totalCost = 0;
+    for (var cartItem in cartItems) {
+      final product = await getProduct(cartItem.product);
+      totalCost += product["cost"] * cartItem.count;
+    }
+    return totalCost;
+  }
 }

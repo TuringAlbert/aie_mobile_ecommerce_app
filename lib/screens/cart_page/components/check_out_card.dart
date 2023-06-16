@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:my_flutter1/components/default_button.dart';
-
+import 'package:my_flutter1/models/cart_items.dart';
+import 'package:my_flutter1/models/Cart.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class CheckoutCard extends StatelessWidget {
+  final List<CartItem> cartItems; // This should be passed to CheckoutCard
+
   const CheckoutCard({
     Key? key,
+    required this.cartItems,
   }) : super(key: key);
 
   @override
@@ -17,7 +21,6 @@ class CheckoutCard extends StatelessWidget {
         vertical: getProportionateScreenWidth(15),
         horizontal: getProportionateScreenWidth(30),
       ),
-      // height: 174,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -63,16 +66,27 @@ class CheckoutCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text.rich(
-                  TextSpan(
-                    text: "Total:\n",
-                    children: [
-                      TextSpan(
-                        text: "\$337.15",
-                        style: TextStyle(fontSize: 16, color: Colors.black),
-                      ),
-                    ],
-                  ),
+                FutureBuilder<double>(
+                  future: CartService.calculateTotalCost(cartItems),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      double totalCost = snapshot.data!;
+                      return Text.rich(
+                        TextSpan(
+                          text: "Total:\n",
+                          children: [
+                            TextSpan(
+                              text: "\￦$totalCost",
+                              style: TextStyle(fontSize: 16, color: Colors.black),
+                            ),
+                          ],
+                        ),
+                      );
+                    } else if (snapshot.hasError) {
+                      return Text("Error calculating total");
+                    }
+                    return CircularProgressIndicator();
+                  },
                 ),
                 SizedBox(
                   width: getProportionateScreenWidth(190),

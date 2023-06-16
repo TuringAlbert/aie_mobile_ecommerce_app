@@ -52,7 +52,7 @@ class CartCard extends StatelessWidget {
                   SizedBox(height: 10),
                   Text.rich(
                     TextSpan(
-                      text: "\$${snapshot.data!['cost']}",
+                      text: "\￦${snapshot.data!['cost']}",
                       style: TextStyle(
                           fontWeight: FontWeight.w600, color: kPrimaryColor),
                       children: [
