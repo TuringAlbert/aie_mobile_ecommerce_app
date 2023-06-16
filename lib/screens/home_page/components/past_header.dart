@@ -109,41 +109,41 @@ class _PastHeaderState extends State<PastHeader> {
               textAlign: TextAlign.left),
           // SizedBox(height: 10,),
           SizedBox(height: 10,),
-          // Container(
-          //     decoration: BoxDecoration(
-          //       borderRadius: BorderRadius.circular(2),
-          //       border: Border.all(
-          //         color: Colors.black,
-          //         width: 2,
-          //       )),
-          //     child: SingleChildScrollView(
-          //       scrollDirection: Axis.horizontal,
-          //       child: Row(
-          //         children: data.map((item) {
-          //           return Container(
-          //             child: Column(
-          //               children: [
-          //                 Image.asset(item['image'], width: 200, height: 200),
-          //                 Text(item['name']),
-          //                 Text(item['cost'].toString()),
-          //                 ElevatedButton(
-          //                   onPressed: () {
-          //                     Navigator.pushNamed(context, '/pay');
-          //                   },
-          //                   child: const Text('구매하기!'),
-          //                 ),
-          //               ],
-          //             ),
-          //           );
-          //         }).toList(),
-          //       ),
-          //     ),
-          //   ),
-          // SizedBox(height: 10,),
-          // Text("가장 유명한 제품!",
-          //     style: TextStyle(fontSize: 22),
-          //     textAlign: TextAlign.left),
-          // SizedBox(height: 10,),
+          Container(
+              // decoration: BoxDecoration(
+              //   borderRadius: BorderRadius.circular(2),
+              //   border: Border.all(
+              //     color: Colors.black,
+              //     width: 2,
+              //   )),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: data.map((item) {
+                    return Container(
+                      child: Column(
+                        children: [
+                          Image.asset(item['image'], width: 200, height: 200),
+                          Text(item['name']),
+                          Text(item['cost'].toString()),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/pay');
+                            },
+                            child: const Text('구매하기!'),
+                          ),
+                        ],
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ),
+            ),
+          SizedBox(height: 10,),
+          Text("가장 유명한 제품!",
+              style: TextStyle(fontSize: 22),
+              textAlign: TextAlign.left),
+          SizedBox(height: 10,),
           Container(
               decoration : BoxDecoration(
                   borderRadius:  BorderRadius.circular(2),
