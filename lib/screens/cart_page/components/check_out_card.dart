@@ -53,13 +53,13 @@ class CheckoutCard extends StatelessWidget {
                   child: SvgPicture.asset("assets/icons/receipt.svg"),
                 ),
                 Spacer(),
-                Text("Add voucher code"),
-                const SizedBox(width: 10),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 12,
-                  color: kTextColor,
-                )
+                // Text("Add voucher code"),
+                // const SizedBox(width: 10),
+                // Icon(
+                //   Icons.arrow_forward_ios,
+                //   size: 12,
+                //   color: kTextColor,
+                // )
               ],
             ),
             SizedBox(height: getProportionateScreenHeight(20)),

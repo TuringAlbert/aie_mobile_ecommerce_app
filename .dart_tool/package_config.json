@@ -86,6 +86,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "fluttertoast",
+      "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/fluttertoast-8.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "http",
       "rootUri": "file:///Users/juyoungkim/.pub-cache/hosted/pub.dev/http-0.13.6",
       "packageUri": "lib/",
@@ -308,7 +314,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2023-06-16T02:33:37.644226Z",
+  "generated": "2023-06-16T07:06:40.707199Z",
   "generator": "pub",
   "generatorVersion": "3.1.0-155.0.dev"
 }

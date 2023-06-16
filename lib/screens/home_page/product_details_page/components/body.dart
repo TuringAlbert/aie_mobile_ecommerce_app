@@ -83,14 +83,14 @@ class _BodyState extends State<Body>{
                       EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
                       child: Row(
                         children: [
-                          ...List.generate(
-                            widget.product.colors.length,
-                                (index) => ColorDot(
-                              color: widget.product.colors[index],
-                              isSelected: index == selectedColor,
-                            ),
-                          ),
-                          Spacer(),
+                          // ...List.generate(
+                          //   widget.product.colors.length,
+                          //       (index) => ColorDot(
+                          //     color: widget.product.colors[index],
+                          //     isSelected: index == selectedColor,
+                          //   ),
+                          // ),
+                          // Spacer(),
                           RoundedIconBtn(
                             icon: Icons.remove,
                             press: _deincrementCounter,

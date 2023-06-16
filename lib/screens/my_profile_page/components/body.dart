@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter1/screens/my_profile_page/components/notification_switch.dart';
 import 'profile_menu.dart';
 import 'profile_pic.dart';
 
@@ -19,7 +20,8 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "Notifications",
             icon: "assets/icons/Bell.svg",
-            press: () {},
+            press: () =>
+              Navigator.pushNamed(context, NotificationSwitchScreen.routeName),
           ),
           ProfileMenu(
             text: "Settings",

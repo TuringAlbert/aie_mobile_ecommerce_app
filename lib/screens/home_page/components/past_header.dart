@@ -42,114 +42,114 @@ class _PastHeaderState extends State<PastHeader> {
         padding: EdgeInsets.all(5.0),
         margin: const EdgeInsets.all(5.0),
         child: Column(children: [
-          Container(
-              width: MediaQuery.of(context).size.width,
-              child :Text('연세 굿즈',
-                  style: TextStyle(fontSize: 22),
-                  textAlign: TextAlign.left)
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black,
-                      width: 2,
-                    )
-                ),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: '상품을 검색해주세요! 예) 연세필통',
-                  ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Validate will return true if the form is valid, or false if
-                    // the form is invalid.
-                    Navigator.pushNamed(context, ProductDetailsScreen.routeName);
-                  },
-                  child: const Text('검색하기'),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 10,),
-          Container(
-              decoration : BoxDecoration(
-                  borderRadius:  BorderRadius.circular(2),
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 2,)
-              ),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    TextButton(onPressed: (){Navigator.pushNamed(context, ProductDetailsScreen.routeName);}, child: Text("교재도서", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
-                    TextButton(onPressed: (){Navigator.pushNamed(context, '/details');}, child: Text("패션굿즈", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
-                    TextButton(onPressed: (){Navigator.pushNamed(context, '/details');}, child: Text("문구굿즈", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
-                    TextButton(onPressed: (){Navigator.pushNamed(context, '/details');}, child: Text("생활용품", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
-                  ],
-                ),
-              )
-          ),
+          // Container(
+          //     width: MediaQuery.of(context).size.width,
+          //     child :Text('연세 굿즈',
+          //         style: TextStyle(fontSize: 22),
+          //         textAlign: TextAlign.left)
+          // ),
+          // Column(
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   children: <Widget>[
+          //     // Container(
+          //     //   decoration: BoxDecoration(
+          //     //       border: Border.all(
+          //     //         color: Colors.black,
+          //     //         width: 2,
+          //     //       )
+          //     //   ),
+          //     //   child: TextFormField(
+          //     //     decoration: const InputDecoration(
+          //     //       hintText: '상품을 검색해주세요! 예) 연세필통',
+          //     //     ),
+          //     //     validator: (String? value) {
+          //     //       if (value == null || value.isEmpty) {
+          //     //         return 'Please enter some text';
+          //     //       }
+          //     //       return null;
+          //     //     },
+          //     //   ),
+          //     // ),
+          //     // Padding(
+          //     //   padding: const EdgeInsets.symmetric(vertical: 16.0),
+          //     //   child: ElevatedButton(
+          //     //     onPressed: () {
+          //     //       // Validate will return true if the form is valid, or false if
+          //     //       // the form is invalid.
+          //     //       Navigator.pushNamed(context, ProductDetailsScreen.routeName);
+          //     //     },
+          //     //     child: const Text('검색하기'),
+          //     //   ),
+          //     // ),
+          //   ],
+          // ),
+          // SizedBox(height: 10,),
+          // Container(
+          //     decoration : BoxDecoration(
+          //         borderRadius:  BorderRadius.circular(2),
+          //         border: Border.all(
+          //           color: Colors.black,
+          //           width: 2,)
+          //     ),
+          //     child: SingleChildScrollView(
+          //       scrollDirection: Axis.horizontal,
+          //       child: Row(
+          //         children: [
+          //           TextButton(onPressed: (){Navigator.pushNamed(context, ProductDetailsScreen.routeName);}, child: Text("교재도서", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
+          //           TextButton(onPressed: (){Navigator.pushNamed(context, '/details');}, child: Text("패션굿즈", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
+          //           TextButton(onPressed: (){Navigator.pushNamed(context, '/details');}, child: Text("문구굿즈", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
+          //           TextButton(onPressed: (){Navigator.pushNamed(context, '/details');}, child: Text("생활용품", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),),),
+          //         ],
+          //       ),
+          //     )
+          // ),
           SizedBox(height: 10,),
           Text("당신만을 위한 추천 아이템!",
               style: TextStyle(fontSize: 22),
               textAlign: TextAlign.left),
+          // SizedBox(height: 10,),
           SizedBox(height: 10,),
-          SizedBox(height: 10,),
-      Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(2),
-          border: Border.all(
-            color: Colors.black,
-            width: 2,
-          )),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: data.map((item) {
-              return Container(
-                child: Column(
-                  children: [
-                    Image.asset(item['image'], width: 200, height: 200),
-                    Text(item['name']),
-                    Text(item['cost'].toString()),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/pay');
-                      },
-                      child: const Text('구매하기!'),
-                    ),
-                  ],
-                ),
-              );
-            }).toList(),
-          ),
-        ),
-      ),
-          SizedBox(height: 10,),
-          Text("가장 유명한 제품!",
-              style: TextStyle(fontSize: 22),
-              textAlign: TextAlign.left),
-          SizedBox(height: 10,),
+          // Container(
+          //     decoration: BoxDecoration(
+          //       borderRadius: BorderRadius.circular(2),
+          //       border: Border.all(
+          //         color: Colors.black,
+          //         width: 2,
+          //       )),
+          //     child: SingleChildScrollView(
+          //       scrollDirection: Axis.horizontal,
+          //       child: Row(
+          //         children: data.map((item) {
+          //           return Container(
+          //             child: Column(
+          //               children: [
+          //                 Image.asset(item['image'], width: 200, height: 200),
+          //                 Text(item['name']),
+          //                 Text(item['cost'].toString()),
+          //                 ElevatedButton(
+          //                   onPressed: () {
+          //                     Navigator.pushNamed(context, '/pay');
+          //                   },
+          //                   child: const Text('구매하기!'),
+          //                 ),
+          //               ],
+          //             ),
+          //           );
+          //         }).toList(),
+          //       ),
+          //     ),
+          //   ),
+          // SizedBox(height: 10,),
+          // Text("가장 유명한 제품!",
+          //     style: TextStyle(fontSize: 22),
+          //     textAlign: TextAlign.left),
+          // SizedBox(height: 10,),
           Container(
               decoration : BoxDecoration(
                   borderRadius:  BorderRadius.circular(2),
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 2,)
+                  // border: Border.all(
+                  //   color: Colors.black,
+                  //   width: 2,)
               ),
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
