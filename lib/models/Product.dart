@@ -1,4 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+// class yeet {
+//   List<dynamic> data = [];
+//   static const baseUrl = 'http://localhost:3000'; // Change this to your server's address
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     fetchData().then((jsonData) {
+//       setState(() {
+//         data = jsonData;
+//       });
+//     });
+//   }
+
+//   static Future<List<dynamic>> fetchData() async {
+//     final response = await http.get(Uri.parse('$baseUrl/products'));
+
+//     if (response.statusCode == 200) {
+//       List<dynamic> jsonData = json.decode(response.body);
+//       return jsonData;
+//     } else {
+//       throw Exception('Failed to load data');
+//     }
+//   }
+// }
+                          // Image.asset(item['image'], width: 200, height: 200),
+                          // Text(item['name']),
+                          // Text(item['cost'].toString()),
 
 class Product {
   final int id;
@@ -22,7 +53,6 @@ class Product {
 }
 
 // Our demo Products
-
 List<Product> demoProducts = [
   Product(
     id: 1,

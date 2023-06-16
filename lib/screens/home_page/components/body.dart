@@ -9,6 +9,7 @@ import 'package:my_flutter1/components/product_card.dart';
 import 'package:my_flutter1/models/Product.dart';
 
 class Body extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context){
     return SafeArea(

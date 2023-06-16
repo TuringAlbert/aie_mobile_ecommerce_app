@@ -15,6 +15,8 @@ import 'package:my_flutter1/models/Product.dart';
 import 'package:my_flutter1/constants.dart';
 import 'package:my_flutter1/size_config.dart';
 import 'package:my_flutter1/screens/home_page/product_details_page/product_details_page.dart';
+import 'package:my_flutter1/routes.dart';
+import 'package:my_flutter1/screens/cart_page/cart_page.dart';
 
 class Body extends StatefulWidget {
   final Product product;
@@ -146,7 +148,11 @@ class _BodyState extends State<Body>{
                         ),
                         child: DefaultButton(
                           text: "결제하기",
-                          press: _incrementCounter,
+                          press: (){
+                            Navigator.pushNamed(context, CartScreen.routeName);
+                            //add to json db
+
+                          },
                         ),
                       ),
                     ),
