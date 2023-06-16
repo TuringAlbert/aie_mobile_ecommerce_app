@@ -17,6 +17,8 @@ import 'package:my_flutter1/size_config.dart';
 import 'package:my_flutter1/screens/home_page/product_details_page/product_details_page.dart';
 import 'package:my_flutter1/routes.dart';
 import 'package:my_flutter1/screens/cart_page/cart_page.dart';
+import 'package:my_flutter1/models/Cart.dart';
+import 'package:my_flutter1/models/cart_items.dart';
 
 class Body extends StatefulWidget {
   final Product product;
@@ -26,7 +28,7 @@ class Body extends StatefulWidget {
   _BodyState createState() => _BodyState();
 }
 
-class _BodyState extends State<Body>{
+class _BodyState extends State<Body> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   late Future<int> _counter;
   late Future<int> _counter_yonsei;
@@ -41,6 +43,7 @@ class _BodyState extends State<Body>{
       });
     });
   }
+
   Future<void> _deincrementCounter() async {
     final SharedPreferences prefs = await _prefs;
     final int counter = (prefs.getInt('counter') ?? 0) - 1;
@@ -51,6 +54,7 @@ class _BodyState extends State<Body>{
       });
     });
   }
+
   @override
   void initState() {
     super.initState();
@@ -58,7 +62,6 @@ class _BodyState extends State<Body>{
       return prefs.getInt('counter') ?? 0;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -81,8 +84,8 @@ class _BodyState extends State<Body>{
                 child: Column(
                   children: [
                     Padding(
-                      padding:
-                      EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: getProportionateScreenWidth(20)),
                       child: Row(
                         children: [
                           // ...List.generate(
@@ -106,10 +109,13 @@ class _BodyState extends State<Body>{
                         ],
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     FutureBuilder<int>(
                         future: _counter,
-                        builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+                        builder: (BuildContext context,
+                            AsyncSnapshot<int> snapshot) {
                           switch (snapshot.connectionState) {
                             case ConnectionState.none:
                             case ConnectionState.waiting:
@@ -120,17 +126,18 @@ class _BodyState extends State<Body>{
                                 return Text('Error: ${snapshot.error}');
                               } else {
                                 return Container(
-                                  padding: EdgeInsets.all(getProportionateScreenWidth(20)),
+                                  padding: EdgeInsets.all(
+                                      getProportionateScreenWidth(20)),
                                   decoration: BoxDecoration(
                                     color: kSecondaryColor.withOpacity(0.1),
                                     borderRadius: BorderRadius.circular(15),
                                   ),
                                   child: Text(
                                     '${snapshot.data}개의 상품을 담았습니다.\n상품은 페이지를 나가도 저장됩니다 :)',
-                                    style : TextStyle(
-                                    fontSize: getProportionateScreenWidth(18),
-                                    fontWeight: FontWeight.w600,
-                                    color: kPrimaryColor,
+                                    style: TextStyle(
+                                      fontSize: getProportionateScreenWidth(18),
+                                      fontWeight: FontWeight.w600,
+                                      color: kPrimaryColor,
                                     ),
                                   ),
                                 );
@@ -148,10 +155,21 @@ class _BodyState extends State<Body>{
                         ),
                         child: DefaultButton(
                           text: "결제하기",
-                          press: (){
-                            Navigator.pushNamed(context, CartScreen.routeName);
-                            //add to json db
+                          press: () async {
+                            // Create a CartItem instance
+                            final cartItem = CartItem(
+                              id: widget.product.id,
+                              product: widget.product.id,
+                              count:
+                                  1, // You can change this value depending on your logic
+                              // add any other fields necessary for CartItem
+                            );
 
+                            // Add the item to the cart
+                           //await CartService.addCartItem(cartItem);
+
+                            // Navigate to the cart page
+                            Navigator.pushNamed(context, CartScreen.routeName);
                           },
                         ),
                       ),
@@ -181,12 +199,12 @@ class ColorDots extends StatelessWidget {
     int selectedColor = 3;
     return Padding(
       padding:
-      EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
         children: [
           ...List.generate(
             product.colors.length,
-                (index) => ColorDot(
+            (index) => ColorDot(
               color: product.colors[index],
               isSelected: index == selectedColor,
             ),
@@ -194,17 +212,13 @@ class ColorDots extends StatelessWidget {
           Spacer(),
           RoundedIconBtn(
             icon: Icons.remove,
-            press: () {
-
-            },
+            press: () {},
           ),
           SizedBox(width: getProportionateScreenWidth(20)),
           RoundedIconBtn(
             icon: Icons.add,
             showShadow: true,
-            press: () {
-
-            },
+            press: () {},
           ),
         ],
       ),
@@ -232,7 +246,7 @@ class ColorDot extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.transparent,
         border:
-        Border.all(color: isSelected ? kPrimaryColor : Colors.transparent),
+            Border.all(color: isSelected ? kPrimaryColor : Colors.transparent),
         shape: BoxShape.circle,
       ),
       child: DecoratedBox(

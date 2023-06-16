@@ -4,76 +4,88 @@
       "id": 1,
       "image": "assets/images/badge.jpeg",
       "name": "yonsei badge",
-      "cost": 5000
+      "cost": 5000,
+      "description": "yeet"
     },
     {
       "id": 2,
       "image": "assets/images/bag.jpg",
       "name": "yonsei bag",
-      "cost": 2000
+      "cost": 50000,
+      "description": "yeet"
     },
     {
       "id": 3,
       "image": "assets/images/bear.jpeg",
       "name": "yonsei bear",
-      "cost": 10000
+      "cost": 10000,
+      "description": "yeet"
     },
     {
       "id": 4,
       "image": "assets/images/folder.jpeg",
       "name": "yonsei folder",
-      "cost": 5000
+      "cost": 1000,
+      "description": "yeet"
     },
     {
       "id": 5,
       "image": "assets/images/poster.png",
-      "name": "yonsei poster",
-      "cost": 20000
+      "name": "yonsei post-it",
+      "cost": 2000,
+      "description": "yeet"
     },
     {
       "id": 6,
       "image": "assets/images/tshirt.png",
       "name": "random tshirt",
-      "cost": 1000
+      "cost": 1000,
+      "description": "yeet"
     }
   ],
   "topProducts": [
     {
       "image": "assets/images/badge.jpeg",
       "name": "yonsei badge",
-      "cost": 5000
+      "cost": 5000,
+      "description": "yeet"
     },
     {
       "image": "assets/images/bag.jpg",
       "name": "yonsei bag",
-      "cost": 2000
+      "cost": 50000,
+      "description": "yeet"
     },
     {
       "image": "assets/images/bear.jpeg",
       "name": "yonsei bear",
-      "cost": 10000
+      "cost": 10000,
+      "description": "yeet"
     },
     {
       "image": "assets/images/folder.jpeg",
       "name": "yonsei folder",
-      "cost": 5000
+      "cost": 1000,
+      "description": "yeet"
     },
     {
       "image": "assets/images/poster.png",
-      "name": "yonsei poster",
-      "cost": 20000
+      "name": "yonsei post-it",
+      "cost": 2000,
+      "description": "yeet"
     },
     {
       "image": "assets/images/tshirt.png",
       "name": "random tshirt",
-      "cost": 1000
+      "cost": 1000,
+      "description": "yeet"
     }
   ],
   "cartItems": [
     {
       "id": 1,
       "product": 1,
-      "count": 37
+      "count": 43
     },
     {
       "id": 3,

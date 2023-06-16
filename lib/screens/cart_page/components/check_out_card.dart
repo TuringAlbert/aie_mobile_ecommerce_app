@@ -5,6 +5,7 @@ import 'package:my_flutter1/models/cart_items.dart';
 import 'package:my_flutter1/models/Cart.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class CheckoutCard extends StatelessWidget {
   final List<CartItem> cartItems; // This should be passed to CheckoutCard
@@ -92,7 +93,13 @@ class CheckoutCard extends StatelessWidget {
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(
                     text: "Check Out",
-                    press: () {},
+                    press: () {
+                      Fluttertoast.showToast(
+                                        msg: "결제가 완료되었습니다!",
+                                        toastLength: Toast.LENGTH_SHORT,
+                                        gravity: ToastGravity.BOTTOM,
+                                      );
+                    },
                   ),
                 ),
               ],

@@ -87,7 +87,7 @@ List<Product> demoProducts = [
       Colors.white,
     ],
     title: "Yonsei Bag",
-    price: 2000,
+    price: 50000,
     description: description,
     rating: 4.1,
     isPopular: true,
