@@ -100,4 +100,4 @@ List<Product> demoProducts = [
 ];
 
 const String description =
-    "연대 짱";
+    "Yonsei Flexible Folder";

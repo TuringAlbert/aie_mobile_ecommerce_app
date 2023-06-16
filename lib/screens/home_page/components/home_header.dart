@@ -73,7 +73,7 @@ void initState() {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SearchField(),
+          SearchBarApp(),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Bell.svg",
             numOfitem: 3,
