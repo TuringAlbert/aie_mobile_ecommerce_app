@@ -20,6 +20,11 @@ class CartService {
 
   // POST /cartItems
   static Future<CartItem> addCartItem(CartItem item) async {
+    // Ensure the count is non-negative
+    if (item.count < 0) {
+      throw Exception('Cannot add a negative quantity');
+    }
+
     final jsonBody = jsonEncode(item.toJson());
 
     final response = await http.post(
@@ -36,25 +41,30 @@ class CartService {
     }
   }
 
-// PUT /cartItems/:id
-static Future<CartItem> updateCartItem(CartItem item) async {
-  final jsonBody = jsonEncode(item.toJson());
+  // PUT /cartItems/:id
+  static Future<CartItem> updateCartItem(CartItem item) async {
+    // Ensure the count is non-negative
+    if (item.count < 0) {
+      throw Exception('Cannot update with a negative quantity');
+    }
 
-  final response = await http.put(
-    Uri.parse('$baseUrl/cartItems/${item.id}'), // <- use item.id here
-    headers: headers,
-    body: jsonBody,
-  );
+    final jsonBody = jsonEncode(item.toJson());
 
-  if (response.statusCode == 200) {
-    final json = jsonDecode(response.body);
-    return CartItem.fromJson(json);
-  } else {
-    print('Status Code: ${response.statusCode}');
-    print('Response Body: ${response.body}');
-    throw Exception('Failed to update cart item');
+    final response = await http.put(
+      Uri.parse('$baseUrl/cartItems/${item.id}'), // <- use item.id here
+      headers: headers,
+      body: jsonBody,
+    );
+
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.body);
+      return CartItem.fromJson(json);
+    } else {
+      print('Status Code: ${response.statusCode}');
+      print('Response Body: ${response.body}');
+      throw Exception('Failed to update cart item');
+    }
   }
-}
 
 
   // DELETE /cartItems/:product
