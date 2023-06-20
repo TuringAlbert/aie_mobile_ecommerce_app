@@ -6,53 +6,45 @@ import '../../../size_config.dart';
 import 'icon_btn_with_counter.dart';
 import 'search_field.dart';
 import 'package:my_flutter1/models/Product.dart';
+import 'package:my_flutter1/main.dart'; // Make sure you import main.dart
 
 class HomeHeader extends StatefulWidget {
-  final int numOfItem;
-
-  const HomeHeader({
-    Key? key,
-    this.numOfItem = 1, // You can set the default value here
-  }) : super(key: key);
+  const HomeHeader({Key? key}) : super(key: key);
 
   @override
-  _HomeHeaderState createState() => _HomeHeaderState(numOfItem: this.numOfItem);
+  _HomeHeaderState createState() => _HomeHeaderState();
 }
 
 class _HomeHeaderState extends State<HomeHeader> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
-  int numOfItem;
-
-  _HomeHeaderState({required this.numOfItem});
 
   @override
   void initState() {
     super.initState();
 
-  _controller = AnimationController(
-    duration: const Duration(milliseconds: 300),
-    vsync: this,
-  );
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
 
-  _animation = Tween<double>(begin: -0.2, end: 0.2).animate(
-    CurvedAnimation(
-      parent: _controller,
-      curve: Curves.bounceIn,
-    ),
-  );
+    _animation = Tween<double>(begin: -0.2, end: 0.2).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.bounceIn,
+      ),
+    );
 
-  // Add this listener to the animation controller
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         Future.delayed(const Duration(seconds: 0), () {
-          if (mounted && numOfItem > 0) { 
+          if (mounted && numOfItemNotifier.value > 0) {
             _controller.reverse();
           }
         });
       } else if (status == AnimationStatus.dismissed) {
         Future.delayed(const Duration(milliseconds: 500), () {
-          if (mounted && numOfItem > 0) { 
+          if (mounted && numOfItemNotifier.value > 0) {
             _controller.forward();
           }
         });
@@ -76,11 +68,21 @@ class _HomeHeaderState extends State<HomeHeader> with SingleTickerProviderStateM
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SearchBarApp(product: demoProducts),
-          IconBtnWithCounter(
-            svgSrc: "assets/icons/Bell.svg",
-            numOfitem: numOfItem,
-            press: () {},
-            animation: _animation,
+          ValueListenableBuilder<int>(
+            valueListenable: numOfItemNotifier,
+            builder: (context, numOfItem, child) {
+              // Restart the animation if numOfItem is greater than 0
+              if (numOfItem > 0 && _controller.status == AnimationStatus.dismissed) {
+                _controller.forward();
+              }
+
+              return IconBtnWithCounter(
+                svgSrc: "assets/icons/Bell.svg",
+                numOfitem: numOfItem,
+                press: () {},
+                animation: _animation,
+              );
+            },
           ),
         ],
       ),

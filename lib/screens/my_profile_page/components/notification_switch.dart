@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
+import 'package:my_flutter1/main.dart';
 
 
 
@@ -28,52 +28,51 @@ class NotificationSwitch extends StatefulWidget{
 
 class _NotificationSwitchState extends State<NotificationSwitch>{
   bool _isChecked = false;
+
   @override
   Widget build(BuildContext context){
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: Text("Notification"),
       ),
       body: Align(
-                alignment: Alignment.center,
-                child: Padding(
+        alignment: Alignment.center,
+        child: Padding(
           padding: EdgeInsets.all(10.0),
-                  child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                      SizedBox(
-                      height: 50,
-                      ),
-                      Center(
-                        child: Row(
-                            children: [
-                              SizedBox(width: 60,),
-                              Text("알림 허용 : "),
-                              SizedBox(width: 20,),
-                              Switch(
-                                value: _isChecked,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _isChecked = value;
-                                    if (_isChecked) {
-                                      Fluttertoast.showToast(
-                                        msg: "알림이 켜졌습니다",
-                                        toastLength: Toast.LENGTH_SHORT,
-                                        gravity: ToastGravity.BOTTOM,
-                                      );
-                                    }
-                                  });
-                                },
-                              )
-                            ],
-                          ),
-                        ),
-
-                      ],
-                      ),
-      ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(height: 50),
+              Center(
+                child: Row(
+                  children: [
+                    SizedBox(width: 60,),
+                    Text("알림 허용 : "),
+                    SizedBox(width: 20,),
+                    Switch(
+                      value: _isChecked,
+                      onChanged: (value) {
+                        setState(() {
+                          _isChecked = value;
+                          // Update the ValueNotifier
+                          numOfItemNotifier.value = value ? 1 : 0;
+                          if (_isChecked) {
+                            Fluttertoast.showToast(
+                              msg: "알림이 켜졌습니다",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
+                            );
+                          }
+                        });
+                      },
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
+  }
 }
-}
-

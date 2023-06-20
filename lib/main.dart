@@ -16,6 +16,7 @@ void main() async {
   runApp(MyApp());
 }
 
+final ValueNotifier<int> numOfItemNotifier = ValueNotifier<int>(0);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
