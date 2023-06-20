@@ -7,26 +7,31 @@ import 'icon_btn_with_counter.dart';
 import 'search_field.dart';
 import 'package:my_flutter1/models/Product.dart';
 
-
 class HomeHeader extends StatefulWidget {
+  final int numOfItem;
+
   const HomeHeader({
     Key? key,
+    this.numOfItem = 1, // You can set the default value here
   }) : super(key: key);
 
   @override
-  _HomeHeaderState createState() => _HomeHeaderState();
+  _HomeHeaderState createState() => _HomeHeaderState(numOfItem: this.numOfItem);
 }
 
 class _HomeHeaderState extends State<HomeHeader> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
+  int numOfItem;
 
-@override
-void initState() {
-  super.initState();
+  _HomeHeaderState({required this.numOfItem});
+
+  @override
+  void initState() {
+    super.initState();
 
   _controller = AnimationController(
-    duration: const Duration(milliseconds: 250),
+    duration: const Duration(milliseconds: 300),
     vsync: this,
   );
 
@@ -38,27 +43,24 @@ void initState() {
   );
 
   // Add this listener to the animation controller
-  _controller.addStatusListener((status) {
-    if (status == AnimationStatus.completed) {
-      // When the animation completes, wait for some time before restarting
-      Future.delayed(const Duration(seconds: 0), () {
-        if (mounted) { // Check if the widget is still in the widget tree
-          _controller.reverse();
-        }
-      });
-    } else if (status == AnimationStatus.dismissed) {
-      // When the reverse animation completes, wait for some time before restarting
-      Future.delayed(const Duration(milliseconds: 500), () {
-        if (mounted) { // Check if the widget is still in the widget tree
-          _controller.forward();
-        }
-      });
-    }
-  });
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        Future.delayed(const Duration(seconds: 0), () {
+          if (mounted && numOfItem > 0) { 
+            _controller.reverse();
+          }
+        });
+      } else if (status == AnimationStatus.dismissed) {
+        Future.delayed(const Duration(milliseconds: 500), () {
+          if (mounted && numOfItem > 0) { 
+            _controller.forward();
+          }
+        });
+      }
+    });
 
-  // Start the animation
-  _controller.forward();
-}
+    _controller.forward();
+  }
 
   @override
   void dispose() {
@@ -76,7 +78,7 @@ void initState() {
           SearchBarApp(product: demoProducts),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Bell.svg",
-            numOfitem: 3,
+            numOfitem: numOfItem,
             press: () {},
             animation: _animation,
           ),
