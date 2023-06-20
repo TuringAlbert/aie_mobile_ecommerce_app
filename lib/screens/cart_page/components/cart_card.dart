@@ -6,7 +6,7 @@ import '../../../size_config.dart';
 
 class CartCard extends StatefulWidget {
   final CartItem cartItem;
-  final VoidCallback onCartUpdated; // Added this line
+  final VoidCallback onCartUpdated;
 
   const CartCard({Key? key, required this.cartItem, required this.onCartUpdated}) : super(key: key);
 
@@ -24,8 +24,14 @@ class _CartCardState extends State<CartCard> {
   }
 
   Future<void> updateCount(int increment) async {
+    int newCount = (count ?? 0) + increment;
+    
+    // Ensure the newCount is non-negative
+    if (newCount < 0) {
+      return;
+    }
+
     try {
-      int newCount = (count ?? 0) + increment;
       await CartService.updateCartItem(
         CartItem(
           id: widget.cartItem.id,
@@ -36,7 +42,7 @@ class _CartCardState extends State<CartCard> {
       setState(() {
         count = newCount;
       });
-      widget.onCartUpdated(); // Added this line
+      widget.onCartUpdated();
     } catch (e) {
       print('Failed to update count: $e');
     }
